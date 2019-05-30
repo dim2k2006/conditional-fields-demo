@@ -126,7 +126,7 @@ if (NODE_ENV === 'production') {
 
     module.exports.plugins.push(
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/style.css',
         })
     );
 

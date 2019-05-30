@@ -1,0 +1,139 @@
+@import 'family.scss';
+
+@function unfoldTransition ($transition) {
+    // Default values
+    $property: all;
+    $duration: 0.3s;
+    $easing: ease; // Browser default is ease, which is what we want
+    $delay: null; // Browser default is 0, which is what we want
+    $defaultProperties: ($property, $duration, $easing, $delay);
+
+    // Grab transition properties if they exist
+    $unfoldedTransition: ();
+
+    @for $i from 1 through length($defaultProperties) {
+        $p: null;
+
+        @if $i <= length($transition) {
+            $p: nth($transition, $i);
+        }
+        @else {
+            $p: nth($defaultProperties, $i);
+        }
+
+        $unfoldedTransition: append($unfoldedTransition, $p);
+    }
+
+    @return $unfoldedTransition;
+}
+
+// Transition
+@mixin transition($transitions...) {
+    $unfoldedTransitions: ();
+
+    @each $transition in $transitions {
+        // stylelint-disable-next-line function-name-case
+        $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+    }
+
+    transition: $unfoldedTransitions;
+}
+
+// Clearfix
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// List reset
+@mixin list-reset {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Responsive
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    @else {
+        @error "Не указано значение для '#{$breakpoint}'.";
+    }
+}
+
+/// Power function
+/// @param {Number} $x
+/// @param {Number} $n
+/// @return {Number}
+@function pow($x, $n) {
+    $ret: 1;
+
+    @if $n >= 0 {
+        @for $i from 1 through $n {
+            $ret: $ret * $x;
+        }
+    }
+    @else {
+        @for $i from $n to 0 {
+            $ret: $ret / $x;
+        }
+    }
+
+    @return $ret;
+}
+
+/// toFixed() function in Sass
+/// @author Hugo Giraudel
+/// @param {Number} $float - Number to format
+/// @param {Number} $digits [2] - Number of digits to leave
+/// @return {Number}
+@function to-fixed($float, $digits: 2) {
+    $sass-precision: 5;
+
+    @if $digits > $sass-precision {
+        @warn "Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now."
+            + "The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`."
+            + "See https://github.com/sass/sass/issues/1122 for further informations.";
+    }
+
+    $pow: pow(10, $digits);
+    @return round($float * $pow) / $pow;
+}
+
+// tablePercentCount
+@function tablePercentCount($width, $container) {
+    @return 0% + to-fixed($width / $container * 100, 1);
+}
+
+// Font face
+@mixin fontFace($fontsList) {
+    @each $fontDir, $fontMap in $fontsList {
+
+        @each $label, $map in $fontMap {
+
+            $fontName: map-get($map, name);
+            $fontType: map-get($map, type);
+            $fontWeight: map-get($map, weight);
+            $fontStyle: map-get($map, style);
+
+            @font-face {
+                font-family: $fontName;
+                src: url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.eot');
+                src:
+                    url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.eot?#iefix') format('embedded-opentype'),
+                    url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.svg##{$fontName}') format('svg'),
+                    url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.woff2') format('woff2'),
+                    url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.woff') format('woff'),
+                    url('#{$fontPath}#{$fontDir}/#{$fontType}/#{$fontType}.ttf') format('truetype');
+                font-weight: $fontWeight;
+                font-style: $fontStyle;
+            }
+        }
+    }
+}
