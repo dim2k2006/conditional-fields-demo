@@ -18,4 +18,37 @@ block content
                     +navigation
 
             +e('div').content
-                +e('p')!= 'sdfsfs sd f s '
+                +b('form').form
+                    div.row
+                        div.col-md-6.mb-3
+                            label(for="full-name")!= "Full Name"
+
+                            div.input-group
+                                input(type="text" class="form-control" id="full-name")
+
+                    div.row
+                        div.col-md-6.mb-3
+                            label(for="email")!= "Email"
+
+                            div.input-group
+                                div.input-group-prepend
+                                    span.input-group-text!= "@"
+
+                                input(type="text" class="form-control" id="email")
+
+                    div.row
+                        div.col-md-6.mb-3
+                            div.input-group
+                                label!= "Are you a Norwegian?"
+
+                                div(style="width: 100%;")
+                                    div.form-check
+                                        input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked)
+
+                                        label.form-check-label(for="exampleRadios1")!= "Yes"
+
+                                    div.form-check
+                                        input.form-check-input(type="radio" name="exampleRadios" id="exampleRadios2" value="option2")
+
+                                        label.form-check-label(for="exampleRadios2")!= "No"
+
