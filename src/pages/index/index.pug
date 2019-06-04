@@ -1,26 +1,2 @@
-doctype html
-
-block vars
-
-html(lang="no")
-    head
-        meta(charset="utf-8")
-        meta(http-equiv="X-UA-Compatible" content="IE=edge")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
-
-        block head
-            meta(name="Description" content=pageDescription || "")
-            meta(name="Keywords" content=pageKeywords || "")
-            title=pageTitle || ""
-
-        link(href="/css/style.css" rel="stylesheet")
-
-        block styles
-
-    body
-        div(id="root")
-
-        script(src="/js/index.js")
-
-        block scripts
+extends ../../assets/templates/layout
 
