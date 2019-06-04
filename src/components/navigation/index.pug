@@ -1,0 +1,14 @@
+mixin navigation()
+    - var links = [
+    - {title: 'Insurance form', url: 'http://ya.ru'},
+    - {title: 'Alarm form', url: 'http://ya.ru'},
+    - {title: 'Loan form', url: 'http://ya.ru'},
+    - {title: 'Insurance form', url: 'http://ya.ru'},
+    - {title: 'Alarm form', url: 'http://ya.ru'}
+    - ];
+
+    +b('div').navigation
+        +e('ul').list
+            each link in links
+                +e('li').item
+                    +e('a').link(href=link.url)!= link.title

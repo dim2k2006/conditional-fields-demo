@@ -4,8 +4,12 @@
 /* BOOTSTRAP */
 @import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-/* Base */
+/* BASE */
 @import 'base/mixins';
 @import 'base/variables';
 @import 'base/base';
 @import 'base/typography';
+
+/* COMPONENTS */
+@import '../../components/logo/index';
+@import '../../components/navigation/index';

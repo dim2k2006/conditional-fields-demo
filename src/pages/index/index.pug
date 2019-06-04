@@ -1,2 +1,21 @@
 extends ../../assets/templates/layout
+include ../../components/logo/index
+include ../../components/navigation/index
 
+block head
+    - var pageDescription = 'Some description';
+    - var pageKeywords = 'Some keywords';
+    - var pageTitle = 'Some title';
+
+block content
+    +b('section').layout
+        +e('div').container
+            +e('div').aside
+                +e('div').logo
+                    +logo
+
+                +e('div').nav
+                    +navigation
+
+            +e('div').content
+                +e('p')!= 'sdfsfs sd f s '

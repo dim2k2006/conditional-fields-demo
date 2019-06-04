@@ -1,3 +1,6 @@
+include mixins/bemto.pug
+include mixins/favicon.pug
+
 doctype html
 
 block vars
@@ -13,12 +16,13 @@ html(lang="no")
             meta(name="Keywords" content=pageKeywords || "")
             title=pageTitle || ""
 
+        link(href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap" rel="stylesheet")
         link(href="/css/style.css" rel="stylesheet")
 
         block styles
 
     body
-        div(id="root")
+        block content
 
         script(src="/js/index.js")
 
