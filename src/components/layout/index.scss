@@ -1,0 +1,35 @@
+$layout: '.layout';
+
+#{$layout} {
+    display: block;
+    flex: 1 0 auto;
+    width: 100%;
+    padding: 0 30px;
+
+    &__container {
+        display: flex;
+        width: 1096px;
+        min-height: 100%;
+        margin: 0 auto;
+    }
+
+    &__aside {
+        width: 252px;
+        padding-top: 30px;
+        background-color: map-get($colors, blueGem);
+    }
+
+    &__content {
+        width: calc(100% - 252px);
+        padding: 55px 48px;
+    }
+
+    &__logo {
+        margin-bottom: 33px;
+        padding: 0 15px;
+    }
+
+    &__intro {
+        margin-bottom: 36px;
+    }
+}

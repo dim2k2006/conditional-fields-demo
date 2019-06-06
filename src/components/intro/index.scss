@@ -1,0 +1,15 @@
+$intro: '.intro';
+
+#{$intro} {
+    &__title {
+        font-size: map-get($font-size, beforelarge);
+        line-height: map-get($line-height, afterlarge);
+        color: map-get($colors, mineShaft);
+    }
+
+    &__subtitle {
+        font-size: map-get($font-size, predefault);
+        line-height: map-get($line-height, small);
+        color: rgba(map-get($colors, mineShaft), 0.5);
+    }
+}
