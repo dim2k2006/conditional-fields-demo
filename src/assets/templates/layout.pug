@@ -1,5 +1,8 @@
 include mixins/bemto.pug
 include mixins/favicon.pug
+include ../../components/logo/index
+include ../../components/navigation/index
+include ../../components/intro/index
 
 doctype html
 
@@ -22,7 +25,21 @@ html(lang="no")
         block styles
 
     body
-        block content
+        +b('section').layout
+            +e('div').container
+                +e('div').aside
+                    +e('div').logo
+                        +logo
+
+                    +e('div').nav
+                        +navigation
+
+                +e('div').content
+                    +e('div').intro
+                        block intro
+
+                    +e('div').form
+                        block form
 
         script(src="/js/index.js")
 
