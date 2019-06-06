@@ -1,12 +1,10 @@
-// Here goes an app
-
-// import all deps + conditional fields
-
-// init conditional fields
+import ConditionalForm from 'conditional-fields-front';
+import addSubmitHandler from '../../components/form';
 import '../../assets/styles/main.scss';
 
-import condFields from 'conditional-fields-front';
+addSubmitHandler();
 
-console.log('test');
-
-// console.log('condFields:', condFields);
+new ConditionalForm(document.querySelector('form'), {
+    onShow: (root) => root.closest('div.row').style.display = 'block',
+    onHide: (root) => root.closest('div.row').style.display = 'none'
+});

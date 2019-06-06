@@ -29,8 +29,10 @@
         "bootstrap": "^4.3.1",
         "conditional-fields-front": "file:../front",
         "core-js": "^2.5.7",
+        "form-serialize": "^0.7.2",
         "lodash": "^4.17.10",
-        "normalize.css": "^8.0.1"
+        "normalize.css": "^8.0.1",
+        "sweetalert2": "^8.11.7"
     },
     "devDependencies": {
         "autoprefixer": "^9.5.1",
