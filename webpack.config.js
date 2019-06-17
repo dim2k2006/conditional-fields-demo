@@ -49,9 +49,13 @@ module.exports = {
             NODE_ENV: JSON.stringify(NODE_ENV)
         }),
         new HtmlWebpackPlugin({
-            title: 'Main',
             template: path.join(PATHS.source, 'pages', 'index', 'index.pug'),
             filename: path.join(PATHS.build, 'index.html'),
+            ...HtmlWebpackPluginConfig
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(PATHS.source, 'pages', 'alarm', 'index.pug'),
+            filename: path.join(PATHS.build, 'alarm.html'),
             ...HtmlWebpackPluginConfig
         }),
         new webpack.NamedModulesPlugin(),
