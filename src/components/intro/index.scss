@@ -11,5 +11,13 @@ $intro: '.intro';
         font-size: map-get($font-size, predefault);
         line-height: map-get($line-height, small);
         color: rgba(map-get($colors, mineShaft), 0.5);
+
+        p {
+            margin-bottom: 10px;
+
+            @include f-last(1) {
+                margin-bottom: 0;
+            }
+        }
     }
 }

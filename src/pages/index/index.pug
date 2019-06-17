@@ -8,7 +8,13 @@ block head
 block intro
     +intro({
         title: 'Insurance form',
-        subtitle: 'Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.'
+        subtitle: `
+            <p>Below is an example of an insurance form using conditional fields.</p>
+
+            <p>Start filling the form and watch how new fields being appeared if you answer «no» on «Are you English?» question.</p>
+
+            <p>Submit the form and check what kind of data is being sent to the server.</p>
+        `
     })
 
 block form
@@ -33,16 +39,16 @@ block form
         div.row
             div.col-md-6.mb-3
                 div.input-group
-                    label!= "Are you a Norwegian?"
+                    label!= "Are you English?"
 
                     div(style="width: 100%;")
                         div.form-check
-                            input.form-check-input(type="radio" name="norway_citizenship" id="qfyjn" value="yes" checked)
+                            input.form-check-input(type="radio" name="english_citizenship" id="qfyjn" value="yes" checked)
 
                             label.form-check-label(for="qfyjn")!= "Yes"
 
                         div.form-check
-                            input.form-check-input(type="radio" name="norway_citizenship" id="buaci" value="no")
+                            input.form-check-input(type="radio" name="english_citizenship" id="buaci" value="no")
 
                             label.form-check-label(for="buaci")!= "No"
 
@@ -52,7 +58,7 @@ block form
                     label(for="760xy")!= "Country of origin"
 
                     div(style="width: 100%;")
-                        select.custom-select(id="760xy" name="origin_citizenship" data-rules='[{"name": "norway_citizenship", "value": ["no"]}]')
+                        select.custom-select(id="760xy" name="origin_citizenship" data-rules='[{"name": "english_citizenship", "value": ["no"]}]')
                             option(selected='') Choose...
                             option(value='AF') Afghanistan
                             option(value='AL') Albania
@@ -63,10 +69,10 @@ block form
         div.row
             div.col-md-6.mb-3
                 .input-group
-                    label(for="t8bn1")!= "Number of years lived in Norway"
+                    label(for="t8bn1")!= "Number of years lived in England"
 
                     div(style="width: 100%;")
-                        select.custom-select(id="t8bn1" name="years_in_norway" data-rules='[{"name": "norway_citizenship", "value": ["no"]}]')
+                        select.custom-select(id="t8bn1" name="years_in_england" data-rules='[{"name": "english_citizenship", "value": ["no"]}]')
                             option(selected='') Choose...
                             option(value='1') 1
                             option(value='2') 2
@@ -88,6 +94,7 @@ block form
                             option(value='18') 18
                             option(value='19') 19
                             option(value='20') 20
+                            option(value='20+') 20+
 
         div.row
             div.col-md-6.mb-3
