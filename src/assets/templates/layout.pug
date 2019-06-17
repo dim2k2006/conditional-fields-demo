@@ -7,6 +7,7 @@ include ../../components/intro/index
 doctype html
 
 block vars
+    - var activeLink = '/';
 
 html(lang="no")
     head
@@ -32,7 +33,7 @@ html(lang="no")
                         +logo
 
                     +e('div').nav
-                        +navigation
+                        +navigation(activeLink)
 
                 +e('div').content
                     +e('div').intro

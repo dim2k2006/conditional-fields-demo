@@ -21,4 +21,10 @@ $navigation: '.navigation';
             background-color: map-get($colors, purple);
         }
     }
+
+    &__link_active {
+        color: map-get($colors, white);
+        text-decoration: none;
+        background-color: map-get($colors, purple);
+    }
 }

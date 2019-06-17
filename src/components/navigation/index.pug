@@ -1,6 +1,6 @@
-mixin navigation()
+mixin navigation(activeLink)
     - var links = [
-    - {title: 'Insurance form', url: 'http://ya.ru'},
+    - {title: 'Insurance form', url: '/'},
     - {title: 'Alarm form', url: 'http://ya.ru'},
     - {title: 'Loan form', url: 'http://ya.ru'},
     - {title: 'Insurance form', url: 'http://ya.ru'},
@@ -11,4 +11,4 @@ mixin navigation()
         +e('ul').list
             each link in links
                 +e('li').item
-                    +e('a').link(href=link.url)!= link.title
+                    +e('a').link(href=link.url class=(activeLink === link.url) ? 'navigation__link_active' : '')!= link.title
