@@ -1,0 +1,25 @@
+$result: '.result';
+
+#{$result} {
+    padding: 25px 20px 0 20px;
+
+    &__title {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: map-get($font-size, mediummore);
+        line-height: 1;
+        color: map-get($colors, mineShaft);
+        text-align: left;
+    }
+
+    &__row {
+        display: flex;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    &__key {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+}

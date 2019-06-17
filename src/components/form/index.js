@@ -1,23 +1,34 @@
 import serialize from 'form-serialize';
+import keys from 'lodash/keys';
 import Swal from 'sweetalert2';
 
 const onSubmit = (form) => (event) => {
     event.preventDefault();
 
-    const formData = Object.keys(serialize(form, {hash: true}))
+    const data = serialize(form, {hash: true});
+    const dataKeys = keys(data);
+
+    const formData = dataKeys
         .map((key) => `
             <div class="result__row">
-                <div class="result__key">${key}</div>
-                <div class="result__value">${value}</div>
+                <div class="result__key">${key}:</div>
+                <div class="result__value">${data[key]}</div>
             </div>
-        `);
-
+        `)
+        .join('');
 
     Swal.fire({
-        type: 'success',
-        title: 'Submitted data:',
-        html: `<div class="result">${formData}</div>`,
-        confirmButtonText: 'Ok'
+        html: `
+            <div class="result">
+                <div class="result__title">Submitted data:</div>
+            
+                ${formData}
+            </div>
+        `,
+        confirmButtonText: 'Close',
+        customClass: {
+            popup: 'modal-wrapper',
+        }
     });
 };
 
