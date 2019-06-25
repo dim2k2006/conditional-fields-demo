@@ -58,6 +58,11 @@ module.exports = {
             filename: path.join(PATHS.build, 'alarm.html'),
             ...HtmlWebpackPluginConfig
         }),
+        new HtmlWebpackPlugin({
+            template: path.join(PATHS.source, 'pages', 'realEstate', 'index.pug'),
+            filename: path.join(PATHS.build, 'real-estate.html'),
+            ...HtmlWebpackPluginConfig
+        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],

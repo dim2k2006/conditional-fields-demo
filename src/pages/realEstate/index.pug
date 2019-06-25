@@ -1,0 +1,109 @@
+extends ../../assets/templates/layout
+
+block vars
+    - var pageDescription = 'Real Estate form';
+    - var pageKeywords = 'Real Estate form';
+    - var pageTitle = 'Real Estate form';
+    - var activeLink = '/real-estate.html';
+
+block intro
+    +intro({
+        title: 'Real Estate form',
+        subtitle: `
+            <p>Below is an example of a «real estate» form using conditional fields.</p>
+
+            <p>Start filling the form and watch how fields being appeared depending on the values of other fields.</p>
+
+            <p>Submit the form and check what kind of data is being sent to the server.</p>
+        `
+    })
+
+block form
+    +b('form').form
+        div.row
+            div.col-md-6.mb-3
+                div.input-group
+                    label!= "What do you need help with?"
+
+                    div(style="width: 100%;")
+                        div.form-check
+                            input.form-check-input(type="radio" name="brokerage_requirements" id="c2378" value="home_sales" checked)
+
+                            label.form-check-label(for="c2378")!= "I am going to sell my property"
+
+                        div.form-check
+                            input.form-check-input(type="radio" name="brokerage_requirements" id="yx8sl" value="valuation")
+
+                            label.form-check-label(for="yx8sl")!= "I'm going to refinance my loan and need valuation"
+
+        div.row
+            div.col-md-12.mb-3
+                .alert.alert-primary(role='alert')
+                    input(type="hidden" name="alert-primary" data-rules='[{"name": "brokerage_requirements", "value": ["valuation"]}]')
+                    h5.alert-heading!= "What kind of property do you want to get assessed the value of?"
+
+                    hr
+
+                    p.mb-0!= "The type of property and where it is located helps us find the right brokers for your needs."
+
+
+        div.row
+            div.col-md-6.mb-3
+                div.input-group
+                    label!= "The case applies"
+
+                    div(style="width: 100%;")
+                        div.form-check
+                            input.form-check-input(type="radio" name="house_type" id="vo9b0" value="house" checked)
+
+                            label.form-check-label(for="vo9b0")!= "House"
+
+                        div.form-check
+                            input.form-check-input(type="radio" name="house_type" id="klfok" value="apartment")
+
+                            label.form-check-label(for="klfok")!= "Apartment"
+
+                        div.form-check
+                            input.form-check-input(type="radio" name="house_type" id="h09h7" value="other_property")
+
+                            label.form-check-label(for="h09h7")!= "Other property"
+
+        div.row
+            div.col-md-6.mb-3
+                div.input-group
+                    div(style="width: 100%;")
+                        div.form-check
+                            input.form-check-input(type="radio" name="other_property" id="xaldr" value="leisure_property" checked data-rules='[{"name": "house_type", "value": ["other_property"]}]')
+
+                            label.form-check-label(for="xaldr")!= "Leisure property"
+
+                        div.form-check
+                            input.form-check-input(type="radio" name="other_property" id="c1dpn" value="commercial_property" data-rules='[{"name": "house_type", "value": ["other_property"]}]')
+
+                            label.form-check-label(for="c1dpn")!= "Commercial property"
+
+                        div.form-check
+                            input.form-check-input(type="radio" name="other_property" id="1b5wb" value="another" data-rules='[{"name": "house_type", "value": ["other_property"]}]')
+
+                            label.form-check-label(for="1b5wb")!= "Another"
+
+        div.row
+            div.col-md-6.mb-3
+                label(for="ko63d")!= "Full Name"
+
+                div.input-group
+                    input(type="text" name="name" class="form-control" id="ko63d")
+
+        div.row
+            div.col-md-6.mb-3
+                label(for="944nl")!= "Email"
+
+                div.input-group
+                    div.input-group-prepend
+                        span.input-group-text!= "@"
+
+                    input(type="text" name="email" class="form-control" id="944nl")
+
+        div.row
+            div.col-md-6.mb-3
+                button.btn.btn-primary(type='submit') Submit form
