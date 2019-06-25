@@ -54,6 +54,11 @@ module.exports = {
             ...HtmlWebpackPluginConfig
         }),
         new HtmlWebpackPlugin({
+            template: path.join(PATHS.source, 'pages', 'insurance', 'index.pug'),
+            filename: path.join(PATHS.build, 'insurance.html'),
+            ...HtmlWebpackPluginConfig
+        }),
+        new HtmlWebpackPlugin({
             template: path.join(PATHS.source, 'pages', 'alarm', 'index.pug'),
             filename: path.join(PATHS.build, 'alarm.html'),
             ...HtmlWebpackPluginConfig
@@ -61,11 +66,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(PATHS.source, 'pages', 'realEstate', 'index.pug'),
             filename: path.join(PATHS.build, 'real-estate.html'),
-            ...HtmlWebpackPluginConfig
-        }),
-        new HtmlWebpackPlugin({
-            template: path.join(PATHS.source, 'pages', 'basic', 'index.pug'),
-            filename: path.join(PATHS.build, 'basic.html'),
             ...HtmlWebpackPluginConfig
         }),
         new webpack.NamedModulesPlugin(),
