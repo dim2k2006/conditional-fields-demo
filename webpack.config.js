@@ -63,6 +63,11 @@ module.exports = {
             filename: path.join(PATHS.build, 'real-estate.html'),
             ...HtmlWebpackPluginConfig
         }),
+        new HtmlWebpackPlugin({
+            template: path.join(PATHS.source, 'pages', 'basic', 'index.pug'),
+            filename: path.join(PATHS.build, 'basic.html'),
+            ...HtmlWebpackPluginConfig
+        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
