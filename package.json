@@ -12,7 +12,7 @@
         "build": "NODE_ENV='production' webpack",
         "eslint": "eslint './src/**/*.js'",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d public -b deploy/dev"
+        "deploy": "gh-pages -d public"
     },
     "pre-commit": [
         "eslint",
