@@ -11,6 +11,7 @@
         "start": "webpack-dev-server",
         "build": "NODE_ENV='production' webpack",
         "eslint": "eslint './src/**/*.js'",
+        "predeploy": "npm run build",
         "deploy": "gh-pages -d public -b deploy/dev"
     },
     "pre-commit": [
