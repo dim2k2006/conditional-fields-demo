@@ -1,4 +1,4 @@
-import ConditionalForm from 'conditional-fields-front';
+import ConditionalForm from 'conditional-fields/public/demo';
 import addSubmitHandler from '../../components/form';
 import '../../assets/styles/main.scss';
 
