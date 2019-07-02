@@ -1,13 +1,19 @@
 mixin navigation(activeLink)
     - var links = [
-    - {title: 'Basic form', url: '/'},
-    - {title: 'Insurance form', url: 'insurance.html'},
-    - {title: 'Alarm form', url: 'alarm.html'},
-    - {title: 'Real Estate form', url: 'real-estate.html'}
-    - ];
+    - {title: 'Basic form', url: htmlWebpackPlugin.options.data.siteRoot},
+    - {title: 'Insurance form', url: `${htmlWebpackPlugin.options.data.siteRoot}insurance.html`},
+    - {title: 'Alarm form', url: `${htmlWebpackPlugin.options.data.siteRoot}alarm.html`},
+    - {title: 'Real Estate form', url: `${htmlWebpackPlugin.options.data.siteRoot}real-estate.html`}
+    - ].map(function(item) {
+        - if (item.url === activeLink) return Object.assign({}, item, {isActive: true});
+
+        - if (activeLink !== '/' && item.url.indexOf(activeLink) !== -1) return Object.assign({}, item, {isActive: true});
+
+        - return Object.assign({}, item, {isActive: false})
+    - });
 
     +b('div').navigation
         +e('ul').list
             each link in links
                 +e('li').item
-                    +e('a').link(href=link.url class=(activeLink === link.url) ? 'navigation__link_active' : '')!= link.title
+                    +e('a').link(href=link.url class= link.isActive ? 'navigation__link_active' : '')!= link.title

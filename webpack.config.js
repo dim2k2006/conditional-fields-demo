@@ -5,6 +5,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const settings = require('./package');
+
+const SITE_ROOT = NODE_ENV === 'development' ? '/' : settings.home;
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -13,6 +16,9 @@ const PATHS = {
 
 const HtmlWebpackPluginConfig = {
     inject: false,
+    data: {
+        siteRoot: SITE_ROOT
+    },
     minify: {
         collapseBooleanAttributes: true,
         collapseWhitespace: true,
