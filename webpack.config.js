@@ -7,7 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const settings = require('./package');
 
-const SITE_ROOT = NODE_ENV === 'development' ? '/' : settings.home;
+const SITE_ROOT = NODE_ENV === 'development' ? '/' : settings.homepage;
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
