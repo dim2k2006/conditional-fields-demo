@@ -7,7 +7,7 @@ mixin navigation(activeLink)
     - ].map(function(item) {
         - if (item.url === activeLink) return Object.assign({}, item, {isActive: true});
 
-        - if (activeLink !== '/' && item.url.indexOf(activeLink) !== -1) return Object.assign({}, item, {isActive: true});
+        - if (activeLink !== htmlWebpackPlugin.options.data.siteRoot && item.url.indexOf(activeLink) !== -1) return Object.assign({}, item, {isActive: true});
 
         - return Object.assign({}, item, {isActive: false})
     - });
